@@ -121,6 +121,7 @@ export default function useTTS() {
 
           const cloneResponse = await fetch("/api/voice/clone", {
             method: "POST",
+            signal: controller.signal,
             body: formData,
           });
 
@@ -128,6 +129,7 @@ export default function useTTS() {
             // 3. Retry the speak request
             response = await fetch("/api/voice/speak", {
               method: "POST",
+              signal: controller.signal,
               headers: {
                 "Content-Type": "application/json",
               },
@@ -154,6 +156,7 @@ export default function useTTS() {
 
             const cloneResponse = await fetch("/api/voice/clone", {
               method: "POST",
+              signal: controller.signal,
               body: formData,
             });
 
@@ -182,6 +185,7 @@ export default function useTTS() {
               // Retry the speak request after silent re-cloning succeeds
               response = await fetch("/api/voice/speak", {
                 method: "POST",
+                signal: controller.signal,
                 headers: {
                   "Content-Type": "application/json",
                 },
